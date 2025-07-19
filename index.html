@@ -6,102 +6,379 @@
   <title>Divy Kalathiya — Portfolio CV</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Inter', sans-serif;
+    }
+    
+    /* Custom animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    @keyframes pulse-slow {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.8;
+      }
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .animate-pulse-slow {
+      animation: pulse-slow 3s ease-in-out infinite;
+    }
+    
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Glassmorphism effect */
+    .glass {
+      backdrop-filter: blur(16px);
+      background: rgba(17, 24, 39, 0.8);
+      border: 1px solid rgba(75, 85, 99, 0.3);
+    }
+    
+    /* Custom hover effects */
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    
+    /* Skill pill animations */
+    .skill-pill {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-pill::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.6s;
+    }
+    
+    .skill-pill:hover::before {
+      left: 100%;
+    }
+    
+    .skill-pill:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
     }
   </style>
 </head>
 <body class="bg-gray-950 text-gray-100">
 
-  <main class="max-w-5xl mx-auto px-6 py-10">
-    
-    <!-- Header -->
-    <section class="mb-12">
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <div class="flex items-center gap-4">
-          <!-- Profile Image -->
-          <img 
-            src="https://res.cloudinary.com/dxam6zinh/image/upload/v1752909031/WhatsApp_Image_2025-07-19_at_12.36.48_079e88bc_pelljl.png" 
-            alt="Divy Kalathiya" 
-            class="w-20 h-20 rounded-full border-2 border-gray-700 object-cover"
-          />
+<body class="bg-gray-950 text-gray-100 overflow-x-hidden">
+  
+  <!-- Background Elements -->
+  <div class="fixed inset-0 -z-10">
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black"></div>
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1.5s;"></div>
+  </div>
 
-          <!-- Name and Title -->
-          <div>
-            <h1 class="text-4xl font-bold text-white">Divy Kalathiya</h1>
-            <p class="text-gray-400 mt-1">Full Stack Developer | MERN | C++ | Java</p>
+  <main class="max-w-6xl mx-auto px-6 py-12 relative">
+    
+    <!-- Hero Section -->
+    <section class="mb-20 animate-fade-in-up">
+      <div class="text-center mb-12">
+        <!-- Profile Image with floating animation -->
+        <div class="relative inline-block mb-8">
+          <div class="w-32 h-32 md:w-40 md:h-40 mx-auto relative">
+            <img 
+              src="https://res.cloudinary.com/dxam6zinh/image/upload/v1752909031/WhatsApp_Image_2025-07-19_at_12.36.48_079e88bc_pelljl.png" 
+              alt="Divy Kalathiya" 
+              class="w-full h-full rounded-full border-4 border-gray-700/50 object-cover shadow-2xl animate-float"
+            />
+            <div class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 animate-pulse"></div>
+          </div>
+          <!-- Status indicator -->
+          <div class="absolute bottom-2 right-2 w-6 h-6 bg-green-500 rounded-full border-4 border-gray-950 animate-pulse"></div>
+        </div>
+        
+        <!-- Name and Title -->
+        <h1 class="text-5xl md:text-7xl font-bold mb-4 gradient-text">
+          Divy Kalathiya
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-400 mb-6 font-light">
+          Full Stack Developer
+        </p>
+        <div class="flex justify-center items-center gap-2 mb-8">
+          <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm font-medium">MERN</span>
+          <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm font-medium">C++</span>
+          <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm font-medium">Java</span>
+        </div>
+        
+        <!-- Contact Info Cards -->
+        <div class="grid md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-8">
+          <div class="glass rounded-2xl p-4 hover-lift">
+            <div class="text-2xl mb-2">📍</div>
+            <p class="text-sm text-gray-300">Anand, Gujarat</p>
+          </div>
+          <div class="glass rounded-2xl p-4 hover-lift">
+            <div class="text-2xl mb-2">📞</div>
+            <p class="text-sm text-gray-300">+91-6359348149</p>
+          </div>
+          <div class="glass rounded-2xl p-4 hover-lift">
+            <div class="text-2xl mb-2">✉️</div>
+            <a href="mailto:divykalathiya17@gmail.com" class="text-sm text-blue-400 hover:text-blue-300 transition-colors">
+              divykalathiya17@gmail.com
+            </a>
           </div>
         </div>
-        <div class="mt-4 sm:mt-0">
-          <p class="text-sm text-gray-400">📍 Anand, Gujarat</p>
-          <p class="text-sm text-gray-400">📞 +91-6359348149</p>
-          <p class="text-sm text-gray-400">✉ <a href="mailto:divykalathiya17@gmail.com" class="text-blue-400 hover:underline">divykalathiya17@gmail.com</a></p>
+        
+        <!-- Social Links -->
+        <div class="flex justify-center gap-6">
+          <a href="https://www.linkedin.com/in/divy-kalathiya-96324a2a1" target="_blank" 
+             class="group flex items-center gap-2 px-6 py-3 bg-blue-600/20 hover:bg-blue-600/30 rounded-full border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300">
+            <svg class="w-5 h-5 text-blue-400 group-hover:text-blue-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            <span class="text-sm font-medium text-gray-300 group-hover:text-white">LinkedIn</span>
+          </a>
+          <a href="https://github.com/divy1710" target="_blank" 
+             class="group flex items-center gap-2 px-6 py-3 bg-gray-700/20 hover:bg-gray-700/30 rounded-full border border-gray-600/30 hover:border-gray-500/50 transition-all duration-300">
+            <svg class="w-5 h-5 text-gray-400 group-hover:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <span class="text-sm font-medium text-gray-300 group-hover:text-white">GitHub</span>
+          </a>
         </div>
-      </div>
-      <div class="mt-3 flex gap-4 text-sm text-blue-400">
-        <a href="https://www.linkedin.com/in/divy-kalathiya-96324a2a1" target="_blank" class="hover:underline">LinkedIn</a>
-        <a href="https://github.com/divy1710" target="_blank" class="hover:underline">GitHub</a>
       </div>
     </section>
 
     <!-- Summary -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-semibold text-white border-b border-gray-800 pb-2 mb-4">👨‍💻 Summary</h2>
-      <p class="text-gray-300">Dedicated software engineer specializing in the MERN stack, C++, and Java. Passionate about building fast, clean, and responsive web applications that elevate user experience.</p>
+    <section class="mb-20 animate-fade-in-up" style="animation-delay: 0.2s;">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">
+          <span class="gradient-text">About Me</span>
+        </h2>
+        <div class="glass rounded-3xl p-8 md:p-12 hover-lift">
+          <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
+            Dedicated software engineer specializing in the 
+            <span class="text-blue-400 font-semibold">MERN stack</span>, 
+            <span class="text-purple-400 font-semibold">C++</span>, and 
+            <span class="text-green-400 font-semibold">Java</span>. 
+            Passionate about building fast, clean, and responsive web applications that elevate user experience and solve real-world problems.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Education -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-semibold text-white border-b border-gray-800 pb-2 mb-4">🎓 Education</h2>
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-gray-900 rounded-xl p-4 shadow">
-          <h3 class="text-lg font-semibold">B.Tech in Information Technology</h3>
-          <p class="text-sm text-gray-400">Devang Patel Institute (DEPSTAR), CHARUSAT</p>
-          <p class="text-sm text-gray-400">2023 - 2027 | CGPA: 9.81</p>
+    <section class="mb-20 animate-fade-in-up" style="animation-delay: 0.4s;">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+        <span class="gradient-text">Education</span>
+      </h2>
+      <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="glass rounded-3xl p-8 hover-lift group">
+          <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">🎓</div>
+          <h3 class="text-xl md:text-2xl font-bold text-white mb-2">B.Tech in Information Technology</h3>
+          <p class="text-blue-400 font-semibold mb-2">Devang Patel Institute (DEPSTAR), CHARUSAT</p>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-gray-400">
+            <span>2023 - 2027</span>
+            <div class="flex items-center gap-2 mt-2 sm:mt-0">
+              <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm font-medium">
+                CGPA: 9.81
+              </span>
+            </div>
+          </div>
         </div>
-        <div class="bg-gray-900 rounded-xl p-4 shadow">
-          <h3 class="text-lg font-semibold">HSC (12th Grade)</h3>
-          <p class="text-sm text-gray-400">Ashadeep Vidhyalaya - 4, Gujarat Board</p>
-          <p class="text-sm text-gray-400">Year: 2023 | PR: 97.14</p>
+        
+        <div class="glass rounded-3xl p-8 hover-lift group">
+          <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">📚</div>
+          <h3 class="text-xl md:text-2xl font-bold text-white mb-2">HSC (12th Grade)</h3>
+          <p class="text-blue-400 font-semibold mb-2">Ashadeep Vidhyalaya - 4, Gujarat Board</p>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-gray-400">
+            <span>Year: 2023</span>
+            <div class="flex items-center gap-2 mt-2 sm:mt-0">
+              <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm font-medium">
+                PR: 97.14
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Skills -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-semibold text-white border-b border-gray-800 pb-2 mb-4">🧠 Technical Skills</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-        <div class="bg-gray-900 p-3 rounded-lg">🚀 <strong>Frontend:</strong> React.js, JS, EJS, Tailwind CSS</div>
-        <div class="bg-gray-900 p-3 rounded-lg">🛠 <strong>Backend:</strong> Node.js, Express, REST, JWT</div>
-        <div class="bg-gray-900 p-3 rounded-lg">🗄 <strong>Database:</strong> MongoDB</div>
-        <div class="bg-gray-900 p-3 rounded-lg">📘 <strong>Languages:</strong> C++, Java, JavaScript (ES6+)</div>
-        <div class="bg-gray-900 p-3 rounded-lg">🔧 <strong>Tools:</strong> Git, GitHub, Postman</div>
-        <div class="bg-gray-900 p-3 rounded-lg">📐 <strong>Concepts:</strong> DSA, Algorithms</div>
+    <section class="mb-20 animate-fade-in-up" style="animation-delay: 0.6s;">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+        <span class="gradient-text">Technical Skills</span>
+      </h2>
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="skill-pill glass rounded-2xl p-6 text-center group cursor-pointer">
+            <div class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🚀</div>
+            <h3 class="font-bold text-white mb-2">Frontend</h3>
+            <p class="text-gray-400 text-sm">React.js, JavaScript, EJS, Tailwind CSS</p>
+          </div>
+          
+          <div class="skill-pill glass rounded-2xl p-6 text-center group cursor-pointer">
+            <div class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🛠</div>
+            <h3 class="font-bold text-white mb-2">Backend</h3>
+            <p class="text-gray-400 text-sm">Node.js, Express, REST APIs, JWT</p>
+          </div>
+          
+          <div class="skill-pill glass rounded-2xl p-6 text-center group cursor-pointer">
+            <div class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🗄</div>
+            <h3 class="font-bold text-white mb-2">Database</h3>
+            <p class="text-gray-400 text-sm">MongoDB</p>
+          </div>
+          
+          <div class="skill-pill glass rounded-2xl p-6 text-center group cursor-pointer">
+            <div class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">📘</div>
+            <h3 class="font-bold text-white mb-2">Languages</h3>
+            <p class="text-gray-400 text-sm">C++, Java, JavaScript (ES6+)</p>
+          </div>
+          
+          <div class="skill-pill glass rounded-2xl p-6 text-center group cursor-pointer">
+            <div class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🔧</div>
+            <h3 class="font-bold text-white mb-2">Tools</h3>
+            <p class="text-gray-400 text-sm">Git, GitHub, Postman</p>
+          </div>
+          
+          <div class="skill-pill glass rounded-2xl p-6 text-center group cursor-pointer">
+            <div class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">📐</div>
+            <h3 class="font-bold text-white mb-2">Concepts</h3>
+            <p class="text-gray-400 text-sm">DSA, Algorithms</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Projects -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-semibold text-white border-b border-gray-800 pb-2 mb-4">📂 Projects</h2>
-      <div class="bg-gray-900 rounded-xl p-5 shadow-lg">
-        <h3 class="text-xl font-semibold mb-1 text-blue-300">Student-Faculty Doubt Solving Platform</h3>
-        <p class="text-sm text-blue-400 mb-2"><a href="https://github.com/divy1710/SGPPROJECT" target="_blank" class="hover:underline">View Project on GitHub</a></p>
-        <ul class="list-disc ml-6 space-y-1 text-gray-300 text-sm">
-          <li>Full-stack MERN web platform for students to raise academic queries.</li>
-          <li>Role-based system: Student, Faculty, Admin with JWT authentication.</li>
-          <li>Secure file upload (PDF/image) via Multer.</li>
-          <li>Status-based question tracking with real-time updates.</li>
-          <li>MongoDB for managing users, questions, and answers.</li>
-          <li>UI built using React.js, Tailwind, and ShadCN components.</li>
-        </ul>
+    <section class="mb-20 animate-fade-in-up" style="animation-delay: 0.8s;">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+        <span class="gradient-text">Featured Project</span>
+      </h2>
+      <div class="max-w-4xl mx-auto">
+        <div class="glass rounded-3xl p-8 md:p-12 hover-lift group">
+          <!-- Project header -->
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+            <div class="mb-4 md:mb-0">
+              <h3 class="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                Student-Faculty Doubt Solving Platform
+              </h3>
+              <p class="text-gray-400">Full-stack MERN web application</p>
+            </div>
+            <a href="https://github.com/divy1710/SGPPROJECT" target="_blank" 
+               class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              View on GitHub
+            </a>
+          </div>
+          
+          <!-- Project features -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <div class="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                <p class="text-gray-300">Full-stack MERN web platform for students to raise academic queries</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                <p class="text-gray-300">Role-based system: Student, Faculty, Admin with JWT authentication</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                <p class="text-gray-300">Secure file upload (PDF/image) via Multer</p>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <div class="w-2 h-2 bg-yellow-400 rounded-full mt-2 flex-shrink-0"></div>
+                <p class="text-gray-300">Status-based question tracking with real-time updates</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
+                <p class="text-gray-300">MongoDB for managing users, questions, and answers</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
+                <p class="text-gray-300">UI built using React.js, Tailwind, and ShadCN components</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Tech stack badges -->
+          <div class="flex flex-wrap gap-2 mt-8">
+            <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm font-medium border border-blue-500/30">React.js</span>
+            <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm font-medium border border-green-500/30">Node.js</span>
+            <span class="px-3 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-sm font-medium border border-yellow-500/30">Express</span>
+            <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm font-medium border border-purple-500/30">MongoDB</span>
+            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm font-medium border border-cyan-500/30">Tailwind CSS</span>
+            <span class="px-3 py-1 bg-red-500/20 text-red-300 rounded-full text-sm font-medium border border-red-500/30">JWT</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="text-center text-gray-500 text-xs mt-16">
-      © 2025 Divy Kalathiya. Built with ❤ in Tailwind.
+    <footer class="text-center py-12 animate-fade-in-up" style="animation-delay: 1s;">
+      <div class="max-w-2xl mx-auto">
+        <div class="glass rounded-2xl p-8">
+          <h3 class="text-xl font-semibold text-white mb-4">Let's Connect</h3>
+          <p class="text-gray-400 mb-6">
+            I'm always open to discussing new opportunities and interesting projects.
+          </p>
+          <a href="mailto:divykalathiya17@gmail.com" 
+             class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+            </svg>
+            Get In Touch
+          </a>
+          <div class="mt-8 pt-6 border-t border-gray-800">
+            <p class="text-gray-500 text-sm">
+              © 2025 Divy Kalathiya. Built with ❤️ and Tailwind CSS.
+            </p>
+          </div>
+        </div>
+      </div>
     </footer>
   </main>
 
